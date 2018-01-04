@@ -72,7 +72,6 @@ class page
 		{
 			$template = $templates[$this->theme_file];
 
-			\Kofradia\View::forgeTwig($template);
 			$response = new \Kofradia\Response();
 			$response->setContents(\Kofradia\View::forgeTwig($template));
 			$response->output();
