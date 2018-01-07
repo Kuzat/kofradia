@@ -63,7 +63,7 @@ class mailer
 	 * @param string subject
 	 * @param bool sende e-posten med en gang
 	 */
-	public static function add_emails(email $email, $receivers, $subject, $send_now = false)
+	public static function add_emails(\Kofradia\Utils\Email $email, $receivers, $subject, $send_now = false)
 	{
 		global $_base;
 		
