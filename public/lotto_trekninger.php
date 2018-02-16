@@ -15,7 +15,7 @@ echo '
 
 // hent trekningene på nåværende side
 $pagei = new pagei(pagei::ACTIVE_GET, "side", pagei::PER_PAGE, 12);
-$result = $pagei->query("SELECT CEILING((time-900)/1800)*1800+900 FROM smafia_database.lotto_vinnere WHERE time > ".(time()-259200)." GROUP BY CEILING((time-900)/1800)*1800+900 ORDER BY time DESC");
+$result = $pagei->query("SELECT CEILING((time-900)/1800)*1800+900 FROM lotto_vinnere WHERE time > ".(time()-259200)." GROUP BY CEILING((time-900)/1800)*1800+900 ORDER BY time DESC");
 
 if ($result->rowCount() == 0)
 {
@@ -35,7 +35,7 @@ else
 		<p class="c">'.$_base->date->get($first+1800)->format().' til '.$_base->date->get($last)->format().'</p>';
 	
 	// hent vinnerene
-	$result = \Kofradia\DB::get()->query("SELECT lv_up_id, time, won, total_lodd, total_users, type FROM smafia_database.lotto_vinnere WHERE time >= $first AND time < $last ORDER BY type");
+	$result = \Kofradia\DB::get()->query("SELECT lv_up_id, time, won, total_lodd, total_users, type FROM lotto_vinnere WHERE time >= $first AND time < $last ORDER BY type");
 	$rounds = array();
 	
 	// legg i riktig gruppe
